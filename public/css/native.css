@@ -1,0 +1,6 @@
+.welcome{background:url('../img/bg-1.jpg'); background-size: cover; background-position: center; height: 100vh;}
+.btn{border-radius: 0px;}
+#signin{margin-top: 18vh;}
+.logo-1{position:relative; margin-bottom:9px;}
+.form-inline{width: 50vh;}
+.col-md-2{text-align: right; padding-top: 6px;}
