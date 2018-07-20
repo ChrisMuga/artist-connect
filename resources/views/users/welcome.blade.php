@@ -7,7 +7,7 @@
     {{-- row --}}
     <div class="row d-flex justify-content-end p-4 welcome">
         <div class="col-md-4">
-            <form id="signin text-center" action="register_user" method="POST">
+            <form id="signin" class="text-center" action="register_user" method="POST">
                 {{csrf_field()}}
                 <div class="row d-flex ">
                     <div class="col-md-2">
@@ -96,9 +96,9 @@
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }
                     });
-                    var formData = new FormData($("#formx")[0]);
+                    var formData = new FormData($("#signin")[0]);
                     jQuery.ajax({
-                        url: "{{ url('/event_registration') }}",
+                        url: "{{ url('/register_user') }}",
                         method: 'post',
                         processData: false, 
                         contentType: false,

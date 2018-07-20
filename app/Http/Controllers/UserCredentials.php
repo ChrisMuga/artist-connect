@@ -6,6 +6,7 @@ use App\user;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\QueryException;
 
 class UserCredentials extends Controller
 {
@@ -19,13 +20,21 @@ class UserCredentials extends Controller
         $user->email_address = $request->email_address;
         $user->password = Hash::make($request->password_1);
         
-        if ($user->save())
+        try
         {
-           return $user->first_name." has been successfully registered";
+
+            $user->save();
+            $msg = $user->first_name." has been successfully registered";
+            return response()->json(["code"=>1, "msg" => $msg]);
+            
         }
-        else
+
+        catch(QueryException $e)
+
         {
-            return "something went wrong...";
+            $msg = "something went wrong...";
+            return response()->json(["code"=>0, "msg" => $msg]);
+
         }
       
         
