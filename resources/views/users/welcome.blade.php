@@ -7,7 +7,8 @@
     {{-- row --}}
     <div class="row d-flex justify-content-end p-4 welcome">
         <div class="col-md-4">
-            <form id="signin text-center">
+            <form id="signin text-center" action="register_user" method="POST">
+                {{csrf_field()}}
                 <div class="row d-flex ">
                     <div class="col-md-2">
                     </div>
@@ -40,7 +41,7 @@
                         <span class="badge badge-danger"><i class="fas fa-phone mx-2"></i></span>
                    </div>
                    <div class="col-md-10">
-                       <input type="phone" class="form-control m-1" placeholder="Phone Number" name="phone" required />
+                       <input type="phone" class="form-control m-1" placeholder="Phone Number" name="phone_number" required />
                    </div>
                </div>
                 
@@ -72,7 +73,7 @@
                         <div class="col-md-10">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type="submit" class="form-control m-2 btn btn-success b-welcome">Enter <i class="fas fa-arrow-right mx-2"></i></button>
+                                    <button type="submit" id="bt1" class="form-control m-2 btn btn-success b-welcome">Enter <i class="fas fa-arrow-right mx-2"></i></button>
                                 </div>
                                 <div class="col-md-6">
                                     <button type="reset" class="form-control m-2 btn btn-danger b-welcome">Clear <i class="fas fa-eraser mx-2"></i></button>
@@ -85,7 +86,55 @@
     </div>
     {{-- row --}}
 
-    
+    <script>
+        jQuery(document).ready(function(){
+            try{
+                jQuery('#bt1').click(function(e){
+                    e.preventDefault();
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    var formData = new FormData($("#formx")[0]);
+                    jQuery.ajax({
+                        url: "{{ url('/event_registration') }}",
+                        method: 'post',
+                        processData: false, 
+                        contentType: false,
+                        data: formData,
+                        success: function(result){
+                            var code=result['code'];
+                            if(code=='1')
+                            {
+                                swal('success',result['msg'], 'success').then((value) => {
+                                    $('#formx')[0].reset();
+                                });
+                            }
+                            else if(code=='0')
+                            {
+                                swal('error',result['msg'], 'error').then((value) => {
+                                   $('#formx')[0].reset();
+                                });
+                                console.log(result['msg']);
+                                
+                            }
+                            
+                            
+                        },
+                        error: function(result){
+                            swal('error','an error occured', 'error');
+                            
+                        }
+                    });
+                });
+            }
+            catch (e)
+            {
+                console.log("error");
+            }
+        });
+    </script>
 
 
 @endsection

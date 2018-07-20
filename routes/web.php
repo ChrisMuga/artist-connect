@@ -13,6 +13,5 @@
 
 Route::get('/','UserController@welcome');
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+Route::any('register_user','UserCredentials@register_user');
