@@ -10,6 +10,8 @@ use Illuminate\Database\QueryException;
 
 class UserCredentials extends Controller
 {
+
+   #user registration 
    public function register_user(Request $request)
    {
         $user = new user;
@@ -39,4 +41,15 @@ class UserCredentials extends Controller
       
         
    }
+   #user registration
+
+
+   #user login
+
+   public function login(Request $request)
+   {
+       return view('users.login');
+   }
+
+   #user login
 }

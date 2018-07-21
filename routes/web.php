@@ -15,3 +15,4 @@ Route::get('/','UserController@welcome');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::any('register_user','UserCredentials@register_user');
+Route::any('login','UserCredentials@login');

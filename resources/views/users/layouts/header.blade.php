@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     {{-- native css --}}
     <link rel="stylesheet" href="css/native.css"/>
+    
+    {{-- jquery --}}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    {{-- native js --}}
+    <script src="js/native.js"></script>
     <link rel="icon" href="img/letter-a.png"/>
     <title>@yield('title')</title>
   </head>  

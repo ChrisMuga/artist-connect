@@ -1,9 +1,6 @@
-
 @extends('users.layouts.skeleton')
+@section('title','Login')
 @section('content')
-    {{-- declare-title --}}
-    @section('title','Artist Connect')
-
     {{-- row --}}
     <div class="row d-flex justify-content-end p-4 welcome">
         <div class="col-md-4">
@@ -17,17 +14,7 @@
                         <img src="img/letter-a.png" class="logo-1"/>
                     </div>
                 </div>
-               <div class="row">
-                   <div class="col-md-2">
-                        <span class="badge badge-danger"><i class="fas fa-user mx-2"></i></span>
-                    </div>
-                    <div class="col-md-5">
-                        <input type="text" class="form-control m-1" placeholder="First Name" name="first_name" required/>
-                    </div>
-                    <div class="col-md-5">
-                        <input type="text" class="form-control m-1" placeholder="Last Name" name="last_name" required/>
-                    </div>
-               </div>
+            
                <div class="row">
                     <div class="col-md-2">
                             <span class="badge badge-danger"><i class="fas fa-envelope mx-2"></i></span>
@@ -36,14 +23,7 @@
                         <input type="email" class="form-control m-1" placeholder="E-Mail Address" name="email_address" required />
                     </div>
                </div>
-               <div class="row">      
-                   <div class="col-md-2">          
-                        <span class="badge badge-danger"><i class="fas fa-phone mx-2"></i></span>
-                   </div>
-                   <div class="col-md-10">
-                       <input type="phone" class="form-control m-1" placeholder="Phone Number" name="phone_number" required />
-                   </div>
-               </div>
+              
                 
                 <hr/>
                
@@ -56,14 +36,6 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-2">
-                            <span class="badge badge-danger"> <i class="fas fa-key mx-2"></i></span>
-                    </div>
-                    <div class="col-md-10">
-                        <input type="password" class="form-control m-1" placeholder="Confirm Password" name="password_2" required />
-                    </div>
-                </div>
               
                 <hr/>
                 <div class="row">
@@ -81,7 +53,7 @@
                             </div>
 
                             <div class="row d-flex justify-content-center">
-                                <a href="login" class="badge badge-secondary">Already registered? Log In here</a>
+                                <a href="/" class="badge badge-secondary">Not registered? Register here</a>
                             </div>
 
                     </div>
@@ -91,6 +63,61 @@
         </div>
     </div>
     {{-- row --}}
+
+    <script>
+        jQuery(document).ready(function(){
+            try{
+                jQuery('#bt1').click(function(e){
+                    e.preventDefault();
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    var formData = new FormData($("#signin")[0]);
+                    jQuery.ajax({
+                        url: "{{ url('/register_user') }}",
+                        method: 'post',
+                        processData: false, 
+                        contentType: false,
+                        data: formData,
+                        success: function(result){
+                            var code=result['code'];
+                            if(code=='1')
+                            {
+                                swal('success',result['msg'], 'success').then((value) => {
+                                    $('#signin')[0].reset();
+                                    window.location.replace("login");
+
+                                });
+                            }
+                            else if(code=='0')
+                            {
+                                swal('error',result['msg'], 'error').then((value) => {
+
+                                   $('#signin')[0].reset();
+                                   
+
+                                });
+                                console.log(result['msg']);
+                                
+                            }
+                            
+                            
+                        },
+                        error: function(result){
+                            swal('error','an error occured', 'error');
+                            
+                        }
+                    });
+                });
+            }
+            catch (e)
+            {
+                console.log("error");
+            }
+        });
+    </script>
 
 
 @endsection
