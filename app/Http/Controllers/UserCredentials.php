@@ -7,6 +7,7 @@ use App\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 
 class UserCredentials extends Controller
 {
@@ -52,4 +53,21 @@ class UserCredentials extends Controller
    }
 
    #user login
+
+   #user authentication
+   public function authenticate_user(Request $request)
+   {
+        $credentials = $request->only('email_address','password');
+
+        if (Auth::attempt($credentials))
+        {
+            return response()->json(['code'=>1,'msg'=>'Welcome, '.Auth::user()->first_name]);
+        }
+        else
+        {
+            return response()->json(['code'=>0,'msg'=>'Something went wrong, check your credentials']);
+        }
+
+   }
+   #user authentication
 }

@@ -12,7 +12,7 @@
 */
 
 Route::get('/','UserController@welcome');
-
-Route::get('/home', 'HomeController@index')->name('home');
 Route::any('register_user','UserCredentials@register_user');
 Route::any('login','UserCredentials@login');
+Route::post('auth_user','UserCredentials@authenticate_user');
+Route::get('home','UserController@home');
