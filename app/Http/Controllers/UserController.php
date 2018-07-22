@@ -15,7 +15,9 @@ class UserController extends Controller
     #home
     public function home(Request $request)
     {
-        return view('users.home');
+        $users = new user;
+        $users = $users::all();
+        return view('users.home')->with('users',$users);
     }
     #home
 
@@ -25,6 +27,15 @@ class UserController extends Controller
         return view('users.welcome');
     }
     #welcome
+
+    #profile
+
+    public function profile(Request $request)
+    {
+        return view('users.profile');
+    }
+
+    #profile
 
     
 }

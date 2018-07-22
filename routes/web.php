@@ -17,3 +17,4 @@ Route::any('login','UserCredentials@login');
 Route::post('auth_user','UserCredentials@authenticate_user');
 Route::get('home','UserController@home');
 Route::get('logout','UserCredentials@logout');
+Route::get('profile','UserController@profile');

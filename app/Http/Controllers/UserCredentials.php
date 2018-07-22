@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\user;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Hash;
 use Illuminate\Database\QueryException;
-use Illuminate\Support\Facades\Auth;
+use Auth;
+
 
 class UserCredentials extends Controller
 {
@@ -16,12 +17,13 @@ class UserCredentials extends Controller
    public function register_user(Request $request)
    {
         $user = new user;
-        $user->id = uniqid();
+        $user->id = rand(100,100000);
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->phone_number = $request->phone_number;
         $user->email_address = $request->email_address;
         $user->password = Hash::make($request->password_1);
+        $user->remember_token = $request->_token;
         
         try
         {
@@ -57,6 +59,7 @@ class UserCredentials extends Controller
    #user authentication
    public function authenticate_user(Request $request)
    {
+
         $credentials = $request->only('email_address','password');
 
         if (Auth::attempt($credentials))
@@ -75,7 +78,9 @@ class UserCredentials extends Controller
    public function logout(Request $request)
    {
         Auth::logout();
-        return redirect('/');
+        return redirect('login');
+       
+        
    }
    #logout
 }
