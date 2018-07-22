@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\user;
+use App\user_detail;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -32,10 +33,34 @@ class UserController extends Controller
 
     public function profile(Request $request)
     {
-        return view('users.profile');
+        $id = Auth::user()->email_address;
+        
+        $user_detail = new user_detail;
+        $user_detail = $user_detail::find($id);
+        
+        return view('users.profile')->with('user_details',$user_detail);
     }
 
     #profile
+
+    #update profile
+
+    public function update_profile(Request $request)
+
+    {
+
+        if( $user_detail = user_detail::forceCreate($request->except('_token')) )
+        {
+            return back();
+        }
+        else
+        {
+            return 'Error';
+        }
+
+    }
+
+    #update profile
 
     
 }

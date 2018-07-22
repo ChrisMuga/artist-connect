@@ -29,6 +29,8 @@
                 {{-- col --}}
                 <div class="col-md-8">
                     <a class="badge badge-danger" href="#">{{$user->first_name}} {{$user->last_name}}</a>
+                    <br/>
+                    <a class="badge badge-secondary" href="#">{{$user->email_address}}</a>
                 </div>
                 {{-- col --}}
 
