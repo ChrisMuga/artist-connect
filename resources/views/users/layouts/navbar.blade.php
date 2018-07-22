@@ -31,11 +31,15 @@
         </ul>
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               {{$name}}
+                @if(!empty(Auth::user()))
+                    {{$name}}
+                @else
+                    Artist Connect
+                @endif
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="#">Profile</a>
-                <a class="dropdown-item" href="#">Log Out</a>
+                <a class="dropdown-item" href="logout">Log Out</a>
             </div>
         </div>
         

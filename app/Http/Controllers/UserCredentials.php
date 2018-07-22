@@ -70,4 +70,12 @@ class UserCredentials extends Controller
 
    }
    #user authentication
+
+   #logout
+   public function logout(Request $request)
+   {
+        Auth::logout();
+        return redirect('/');
+   }
+   #logout
 }
