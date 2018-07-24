@@ -13,7 +13,7 @@
 <div class="row">
    {{-- col --}}
    <div class="col-md-2 border-right">
-        <img src="img/pic.jpg" alt="Artist Connect" class="profile-pic-1"/>
+        <img src="img/profile-pictures/{{$user->id}}.jpg" alt="Artist Connect" class="profile-pic-1"/>
         <br>
         <span class="badge badge-danger">{{$name}}</span>
         <br/>
@@ -26,14 +26,17 @@
    <div class="col-md-10">
         @if( !empty($user_details) )
             {{-- jumbotron --}}
-            <div class="jumbotron">
-                <h1 class="display-4">{{$name}}</h1>
-                <p class="lead">{{$user_details->bio}}</p>
-                <hr class="my-4">
-                <span class="badge badge-danger">{{$user_details->nationality}}</span>
-                <span class="badge badge-secondary">{{$user_details->location}}</span>
-                <hr/>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Share Something</a>
+            <div class="jumbotron jp bg-dark">
+                <div class="xjump"  style='background:url("img/profile-pictures/{{$user->id}}.jpg") no-repeat'>
+                    <h1 class="display-4" style="color:white"><span style="background:black; opacity:0.8; padding:10px;" >{{$name}}</span></h1>
+                    <br/>
+                    <p class="text-success"><span style="background:black; opacity:0.8; padding:10px;" >{{$user_details->bio}}</span</p>
+                    <hr class="my-4">
+                    <span class="badge badge-danger">{{$user_details->nationality}}</span>
+                    <span class="badge badge-secondary">{{$user_details->location}}</span>
+                    <hr/>
+                    <a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#exampleModal">Share Something</a>
+                </div>
             </div>
             {{-- jumbotron --}}
         @endif
@@ -114,7 +117,12 @@
 
                 {{-- col --}}
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="nationality" placeholder="Nationality" required/>
+                    <input type="text" class="form-control" name="nationality" placeholder="Nationality"
+                    @if( !empty( $user_details ) )
+                            value="{{$user_details->nationality}}"
+                    @endif
+                    
+                    required/>
                 </div>
                 {{-- col --}}
 
@@ -131,7 +139,12 @@
 
                 {{-- col --}}
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="location" placeholder="Location" required/>
+                    <input type="text" class="form-control" name="location" placeholder="Location"
+                    @if( !empty( $user_details ) )
+                            value="{{$user_details->location}}"
+                    @endif
+                    
+                    required/>
                 </div>
                 {{-- col --}}
 
@@ -149,7 +162,12 @@
 
                 {{-- col --}}
                 <div class="col-md-10">
-                    <input type="text" class="form-control" name="gender" placeholder="Gender" required/>
+                    <input type="text" class="form-control" name="gender" placeholder="Gender"
+                    @if( !empty( $user_details ) )
+                        value="{{$user_details->gender}}"
+                    @endif
+                    
+                    required/>
                 </div>
                 {{-- col --}}
 
@@ -168,7 +186,16 @@
 
                 {{-- col --}}
                 <div class="col-md-10">
-                    <textarea type="text" class="form-control" name="bio" placeholder="Bio..." rows="7" required/></textarea>
+                    <textarea type="text" class="form-control text-left" name="bio" placeholder="Bio..." rows="7"
+                    @if( !empty( $user_details ) )
+                            value="{{$user_details->bio}}"
+                    @endif
+                    
+                    required/>
+                        @if( !empty( $user_details ) )
+                            {{$user_details->bio}}
+                        @endif
+                    </textarea>
                 </div>
                 {{-- col --}}
 
@@ -198,5 +225,36 @@
 
 </div>
 {{-- row --}}
+
+{{-- modal --}}
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-pen-fancy"></i> Say Something</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <form action="post" method="POST">
+
+            {{csrf_field()}}
+            <input type="hidden" name="user_id" value="{{Auth::user()->id}}"/>
+            
+            <div class="modal-body">
+                <textarea rows="8" class="form-control text-danger" placeholder="Share something..." name="post"></textarea>
+            </div>
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-danger" >Post</button>
+            <button type="reset" class="btn btn-primary" data-dismiss="modal">Clear</button>
+            </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+{{-- modal --}}
 
 @endsection

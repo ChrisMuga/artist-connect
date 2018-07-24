@@ -19,3 +19,4 @@ Route::get('home','UserController@home');
 Route::get('logout','UserCredentials@logout');
 Route::get('profile','UserController@profile');
 Route::post('update_profile','UserController@update_profile');
+Route::post('post','UserController@post');

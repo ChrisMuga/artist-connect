@@ -7,4 +7,13 @@
 .logo{width:30px;}
 .profile-pic{width: 100%; height: 100%;}
 .profile-pic-1{width: 100px; height: 150px;}
+.img-p{ height: 80px; width: 70px;}
 .footer{position: relative; bottom: 0px; font-weight: bold; margin-top: 30px;}
+.xjump
+{
+    padding: 20px;
+    background-position: right;  -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
