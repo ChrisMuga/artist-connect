@@ -13,7 +13,8 @@
 <div class="row">
     {{-- col --}}
     <div class="col-md-4">
-        <span class="badge badge-primary">People</span>
+        <span class="badge badge-primary my-2">People</span>
+        <br/>
 
         {{-- loop --}}
         @foreach ($users as $user)
@@ -46,13 +47,14 @@
 
     {{-- col --}}
     <div class="col-md-8">
-        <span class="badge badge-danger">Posts</span>
+        <span class="badge badge-danger my-2">Posts</span>
+        <br/>
         @foreach($posts as $post)
             {{-- row --}}
             <div class="row">
                 {{-- col --}}
-                <div class="col-md-2">
-                    <img class="img-p" src='img/profile-pictures/{{$post->user_id}}.jpg' /> 
+                <div class="col-md-2" style="background:url('img/profile-pictures/{{$post->user_id}}.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; ">
+                    
                 </div>
                 {{-- col --}}
                 {{-- col --}}
@@ -94,6 +96,7 @@
                 {{-- col --}}
             </div>
             {{-- row --}}
+            <hr/>
         @endforeach
     </div>
     {{-- col --}}

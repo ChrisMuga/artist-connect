@@ -12,8 +12,8 @@
 {{-- row --}}
 <div class="row">
    {{-- col --}}
-   <div class="col-md-2 border-right">
-        <img src="img/profile-pictures/{{$user->id}}.jpg" alt="Artist Connect" class="profile-pic-1"/>
+   <div class="col-md-2 border-right border-left">
+        <div style="background:url('img/profile-pictures/{{Auth::user()->id}}.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; " class="profile-pic-1"></div>
         <br>
         <span class="badge badge-danger">{{$name}}</span>
         <br/>
@@ -26,8 +26,8 @@
    <div class="col-md-10">
         @if( !empty($user_details) )
             {{-- jumbotron --}}
-            <div class="jumbotron jp bg-dark">
-                <div class="xjump"  style='background:url("img/profile-pictures/{{$user->id}}.jpg") no-repeat'>
+            <div class="jumbotron" style='background:url("img/profile-pictures/{{$user->id}}.jpg"); background-size: cover; background-position: center; background-repeat: no-repeat;'>
+                <div style="background:black; padding:20px; opacity:0.7;">
                     <h1 class="display-4" style="color:white"><span style="background:black; opacity:0.8; padding:10px;" >{{$name}}</span></h1>
                     <br/>
                     <p class="text-success"><span style="background:black; opacity:0.8; padding:10px;" >{{$user_details->bio}}</span</p>
