@@ -20,3 +20,12 @@ Route::get('logout','UserCredentials@logout');
 Route::get('profile','UserController@profile');
 Route::post('update_profile','UserController@update_profile');
 Route::post('post','UserController@post');
+Route::any('user/{name}', function ( $name = "Muga" ) 
+                            
+                            {
+
+                                return $name;
+
+                            }
+
+                        );
