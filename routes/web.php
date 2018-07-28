@@ -1,5 +1,8 @@
 <?php
 
+use App\user;
+use App\post;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,11 +23,14 @@ Route::get('logout','UserCredentials@logout');
 Route::get('profile','UserController@profile');
 Route::post('update_profile','UserController@update_profile');
 Route::post('post','UserController@post');
-Route::any('user/{name}', function ( $name = "Muga" ) 
+Route::any('{id}', function ($id) 
                             
                             {
 
-                                return $name;
+                                $user = user::find($id);
+                                $posts = post::where('user_id',$id)->get();
+                                return view('users.user_profile')  ->with('user',$user)
+                                                        ->with('posts', $posts);
 
                             }
 

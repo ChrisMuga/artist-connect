@@ -30,7 +30,7 @@
 
                 {{-- col --}}
                 <div class="col-md-8">
-                    <a class="badge badge-danger" href="#">{{$user->first_name}} {{$user->last_name}}</a>
+                    <a class="badge badge-danger" href="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</a>
                     <br/>
                     <a class="badge badge-secondary" href="#">{{$user->email_address}}</a>
                 </div>
@@ -65,7 +65,7 @@
 
                             @if($user->id == $post->user_id)
                             
-                                <a href="#" class="badge badge-danger">{{$user->first_name}} {{$user->last_name}}</a>
+                                 <a href="{{$user->id}}" class="badge badge-danger">{{$user->first_name}} {{$user->last_name}}</a>
                             @endif
                             
                         @endforeach
