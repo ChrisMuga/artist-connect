@@ -6,7 +6,7 @@
     @section('content')
         <div class="row" >
             {{-- posts --}}
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <h1 class="text-danger text-right" style="font-weight: bold; text-transform:uppercase;">{{$namex}}'s posts <span class="badge badge-primary">{{count($posts)}}</span></h1>
                 <hr/>
                 
@@ -32,8 +32,16 @@
             {{-- posts --}}
 
             {{-- user --}}
-            <div class="col-md-2" style="background:url('img/profile-pictures/{{$user->id}}.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height:30vh; ">
-                
+            <div class="col-md-4" >
+                <div style="background:url('img/profile-pictures/{{$user->id}}.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; height:30vh; "></div>
+                <br/>
+                <ul class="list-group">
+                    <li class="list-group-item active">{{$namex}}</li>
+                    <li class="list-group-item">{{$user -> phone_number}}</li>
+                    <li class="list-group-item">{{$user -> email_address}}</li>
+                    <li class="list-group-item">{{$user_details -> nationality}}</li>
+                    <li class="list-group-item">{{$user_details -> gender}}</li>
+                </ul>
             </div>
             {{-- user --}}
 

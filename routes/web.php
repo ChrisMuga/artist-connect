@@ -2,6 +2,7 @@
 
 use App\user;
 use App\post;
+use App\user_detail;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,12 @@ Route::any('{id}', function ($id)
 
                                 $user = user::find($id);
                                 $posts = post::where('user_id',$id)->get();
-                                return view('users.user_profile')  ->with('user',$user)
-                                                        ->with('posts', $posts);
+                                $user_detail = user_detail::find($user->email_address);
+                                
+                                return view('users.user_profile')     
+                                        ->with('user',$user)
+                                        ->with('posts', $posts)
+                                        ->with('user_details',$user_detail);
 
                             }
 
