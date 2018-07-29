@@ -9,12 +9,15 @@
             <div class="col-md-8">
                 <h1 class="text-danger text-right" style="font-weight: bold; text-transform:uppercase;">{{$namex}}'s posts <span class="badge badge-primary">{{count($posts)}}</span></h1>
                 <hr/>
+                <style>
+                    .classx:hover{ background: linear-gradient(to right, #007bff , #6610f2); color: white; padding: 20px; cursor: pointer;}
+                    </style>
                 
                     <div class="row my-1">
                         @php($c = 1)
                         @foreach($posts as $post)
                             {{-- post --}}
-                            <div class="col-md-6 my-2 border-left border-dark border-4">
+                            <div class="col-md-6 my-2 border-left border-dark border-4 classx">
                                     
                                <span class="badge badge-danger">{{$c}}</span>
                                           
