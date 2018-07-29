@@ -10,20 +10,21 @@
                 <h1 class="text-danger text-right" style="font-weight: bold; text-transform:uppercase;">{{$namex}}'s posts <span class="badge badge-primary">{{count($posts)}}</span></h1>
                 <hr/>
                 <style>
-                    .classx:hover{ background: linear-gradient(to right, #007bff , #6610f2); color: white; padding: 20px; cursor: pointer;}
+                    .classx:hover{ background: #343a40 ; color: white;  cursor: pointer;}
+                   
                     </style>
                 
                     <div class="row my-1">
                         @php($c = 1)
                         @foreach($posts as $post)
                             {{-- post --}}
-                            <div class="col-md-6 my-2 border-left border-dark border-4 classx">
+                            <div class="col-md-6 my-2 border-left border-dark border-4 classx p-4">
                                     
                                <span class="badge badge-danger">{{$c}}</span>
                                           
                                 <blockquote class="blockquote text-right">
                                     <p class="mb-0">{{$post->post}}</p>
-                                    <footer class="blockquote-footer"> {{$namex}} <cite title="Source Title"><span class="badge badge-warning">{{$post->created_at}}</span></cite></footer>
+                                    <footer class="blockquote-footer text-danger"> {{$namex}} <cite title="Source Title"><span class="badge badge-warning">{{$post->created_at}}</span></cite></footer>
                                 </blockquote>
                             </div>
                             {{-- post --}}
