@@ -24,19 +24,21 @@ Route::get('logout','UserCredentials@logout');
 Route::get('profile','UserController@profile');
 Route::post('update_profile','UserController@update_profile');
 Route::post('post','UserController@post');
-Route::any('{id}', function ($id) 
+// Route::any('{id}', function ($id) 
                             
-                            {
+//                             {
 
-                                $user = user::find($id);
-                                $posts = post::where('user_id',$id)->get();
-                                $user_detail = user_detail::find($user->email_address);
+//                                 $user = user::find($id);
+//                                 $posts = post::where('user_id',$id)->get();
+//                                 $user_detail = user_detail::find($user->email_address);
                                 
-                                return view('users.user_profile')     
-                                        ->with('user',$user)
-                                        ->with('posts', $posts)
-                                        ->with('user_details',$user_detail);
+//                                 return view('users.user_profile')     
+//                                         ->with('user',$user)
+//                                         ->with('posts', $posts)
+//                                         ->with('user_details',$user_detail);
 
-                            }
+//                             }
 
-                        );
+//                         );
+
+Route::get('typeahead','UserController@typeahead');

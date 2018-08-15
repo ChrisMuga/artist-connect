@@ -114,5 +114,14 @@ class UserController extends Controller
 
     #post
 
+    #typeahead ui
+
+    public function typeahead(Request $request)
+    {
+        return view('users.typeahead');
+    }
+
+    #typeahead ui
+
     
 }

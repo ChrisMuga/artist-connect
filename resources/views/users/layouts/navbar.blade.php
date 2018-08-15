@@ -19,7 +19,9 @@
             More
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{Auth::user()->id}}">My Posts</a>
+            @if( Auth::check() )
+                <a class="dropdown-item" href="{{Auth::user()->id}}">My Posts</a>
+            @endif
             <a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
@@ -28,7 +30,7 @@
         </ul>
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @if( Auth::check() )
+                @if( Auth::check() && isset($name) )
                     {{$name}}
                 @else
                     Artist Connect

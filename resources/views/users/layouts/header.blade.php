@@ -18,6 +18,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     {{-- native js --}}
     <script src="js/native.js"></script>
+    {{-- typeahead js --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
     <link rel="icon" href="img/letter-a.png"/>
     <title>@yield('title')</title>
   </head>  
