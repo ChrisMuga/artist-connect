@@ -134,7 +134,8 @@ class UserController extends Controller
         $content        =   file_get_contents("https://restcountries.eu/rest/v2/all");
         $result         =   json_decode($content);
 
-  
+        #counter
+        $count          =   0;
 
         #echo (count($result));
 
@@ -143,8 +144,9 @@ class UserController extends Controller
             #$countries[]    =   $x->name;
             #$capitals[]     =   $x->capital;
 
-            $data[$x->name]["name"]             =   $x->name;
-            $data[$x->name]["capital"]          =   $x->capital;
+            $data[$count]["name"]             =   $x->name;
+            $data[$count]["capital"]          =   $x->capital;
+            $count++;
 
             
         }
