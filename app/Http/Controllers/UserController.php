@@ -123,5 +123,40 @@ class UserController extends Controller
 
     #typeahead ui
 
+    #fetch
+
+    public function fetch(Request $request)
+    {
+        #create array
+        $countries      =   array();
+        $capitals       =   array();
+        $data           =   array();
+        $content        =   file_get_contents("https://restcountries.eu/rest/v2/all");
+        $result         =   json_decode($content);
+
+  
+
+        #echo (count($result));
+
+        foreach($result as $x)
+        {
+            #$countries[]    =   $x->name;
+            #$capitals[]     =   $x->capital;
+
+            $data[$x->name]["name"]             =   $x->name;
+            $data[$x->name]["capital"]          =   $x->capital;
+
+            
+        }
+
+        //return $countries;
+        //return $capitals;
+
+        return $data;
+
+    }
+
+    #fetch
+
     
 }

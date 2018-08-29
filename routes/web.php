@@ -42,3 +42,4 @@ Route::post('post','UserController@post');
 //                         );
 
 Route::get('typeahead','UserController@typeahead');
+Route::get('fetch','UserController@fetch');
