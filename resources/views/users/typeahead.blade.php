@@ -26,7 +26,7 @@ $('#search').typeahead(null, {
   templates: {
     empty: [
       '<div class="empty-message">',
-        'unable to find any Best Picture winners that match the current query',
+        'NOT Found',
       '</div>'
     ].join('\n'),
     suggestion: Handlebars.compile('<div><strong>'+countries.name+'</strong></div>')
