@@ -3,42 +3,25 @@
 @section('content')
 
 <div class="container">
-    <input class="form-control my-2" id="search" placeholder="Search"/> 
+    <input class="form-control my-2 typeahead" id="search" placeholder="Search"/> 
 </div>
 
 <script>
-
-
-//typeahead js
-
-//typeahead js
 var data;
 
 //fetch data
 fetch('fetch')
-  .then(function(response) {
+  .then(function(response) 
+  {
     return response.json();
   })
-  .then(function(myJson) {
-
-    console.log(myJson);
-   
-    $('#search').typeahead(null, {
-    name: 'data',
-    display: 'name',
-    source: myJson,
-    templates: {
-      
-                  empty:        [
-                                    '<div class="empty-message">',
-                                      'unable to find any Best Picture winners that match the current query',
-                                    '</div>'
-                                ].join('\n'),
-
-                  suggestion:   Handlebars.compile('<div><strong>'+myJson.name+'</strong> – '+myJson.capital+'</div>')
-                }
-});
+  .then(function(myJson) 
+  
+  {
     
+      data  = myJson[0].name;
+      console.log(data);
+   
   });
 
   
