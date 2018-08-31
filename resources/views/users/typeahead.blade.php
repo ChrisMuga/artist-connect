@@ -22,7 +22,6 @@ console.log(countries);
 
 $('#search').typeahead(null, {
   name: 'countries',
-  display: 'name',
   source: countries,
   templates: {
     empty: [
@@ -30,7 +29,7 @@ $('#search').typeahead(null, {
         'unable to find any Best Picture winners that match the current query',
       '</div>'
     ].join('\n'),
-    suggestion: Handlebars.compile('<div><strong>'+countries+'</strong> – '+countries+'</div>')
+    suggestion: Handlebars.compile('<div><strong>'+countries.name+'</strong></div>')
   }
 });
 

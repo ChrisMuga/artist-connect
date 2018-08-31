@@ -141,7 +141,7 @@ class UserController extends Controller
 
         foreach($result as $x)
         {
-            #$countries[]    =   $x->name;
+            $countries[]    =   $x->name;
             #$capitals[]     =   $x->capital;
 
             $data[$count]["name"]             =   $x->name;
@@ -151,10 +151,10 @@ class UserController extends Controller
             
         }
 
-        //return $countries;
-        //return $capitals;
+        return $countries;
+        #return $capitals;
 
-        return $data;
+        #return $data;
 
     }
 
