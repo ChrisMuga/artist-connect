@@ -151,10 +151,10 @@ class UserController extends Controller
             
         }
 
-        return $countries;
+        #return $countries;
         #return $capitals;
 
-        #return $data;
+        return $data;
 
     }
 
