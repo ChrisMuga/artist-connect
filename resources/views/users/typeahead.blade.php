@@ -3,7 +3,10 @@
 @section('content')
 
 <div class="container">
-  <div id="scrollable-dropdown-menu"><input class="typeahead" id="search"/></div>
+	<style>
+		.x{width: 70vw;}
+	</style>
+  <div id="scrollable-dropdown-menu"><input class="typeahead form-control x" id="search"/></div>
 </div>
 
 
@@ -12,12 +15,10 @@
     		var bloodhound = new Bloodhound({
 				datumTokenizer: Bloodhound.tokenizers.whitespace,
 				queryTokenizer: Bloodhound.tokenizers.whitespace,
-				// remote: {
-				// 	url: '/fetch',
-				// 	wildcard: '%QUERY%'
-				// },
         		prefetch: 'fetch'
 			});
+
+			console.log(bloodhound);
 			
 			$('#search').typeahead(
 				{
@@ -34,7 +35,7 @@
 
 					display:	function(data) 
 								{
-									return data.name  //Input value to be set when you select a suggestion. 
+									return data  //Input value to be set when you select a suggestion. 
 								},
 
 					templates: 
@@ -42,7 +43,7 @@
 
 					{
 						empty:			[
-											'<div class="list-group search-results-dropdown"><div class="list-group-item">Nothing found.</div></div>'
+											'<div class="list-group search-results-dropdown x"><div class="list-group-item">Nothing found.</div></div>'
 										],
 
 						header: 		[
@@ -55,7 +56,7 @@
 											console.log(data);
 											console.log(typeof(data))
 											console.log(data.name);
-											return '<a href="https://www.google.com"><div style="font-weight:normal; margin-top:-10px ! important;" class="list-group-item">' + data + '</div></div></a>'
+											return '<div style="font-weight:normal; margin-top:-10px ! important;" class="list-group-item">' + data.name + ' - '+data.capital+'</div></div>'
 										}
 					}
 
