@@ -15,7 +15,7 @@
     		var bloodhound = new Bloodhound({
 				datumTokenizer: Bloodhound.tokenizers.whitespace,
 				queryTokenizer: Bloodhound.tokenizers.whitespace,
-        		prefetch: 'fetch'
+        		remote: {url: '/fetch'}
 			});
 
 			console.log(bloodhound);
@@ -35,7 +35,7 @@
 
 					display:	function(data) 
 								{
-									return data  //Input value to be set when you select a suggestion. 
+									return data.name  //Input value to be set when you select a suggestion. 
 								},
 
 					templates: 
