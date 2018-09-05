@@ -3,10 +3,26 @@
 @section('content')
 
 <div class="container">
-	<style>
-		.x{width: 70vw;}
-	</style>
-  <div id="scrollable-dropdown-menu"><input class="typeahead form-control x" id="search"/></div>
+
+	{{-- row --}}
+	<div class="row">
+
+		<style>
+			.x{width: 70vw;}
+		</style>
+		<div id="scrollable-dropdown-menu"><input class="typeahead form-control x" id="search"/></div>
+
+	</div>
+	{{-- row --}}
+
+	{{-- row --}}
+	<div class="row" id="app">
+
+		<example-component></example-component>
+
+	</div>
+	{{-- row --}}
+	
 </div>
 
 

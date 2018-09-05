@@ -26,6 +26,8 @@
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
     
   
    
