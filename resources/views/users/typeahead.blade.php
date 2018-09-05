@@ -16,9 +16,16 @@
 	{{-- row --}}
 
 	{{-- row --}}
-	<div class="row" id="app">
-
-		<example-component></example-component>
+	<div class="row mt-3" id="app">
+		<div class="col-md-5">
+			<example-component></example-component>
+		</div>
+		
+		<div class="col-md-7">
+				<jumbotron></jumbotron>
+		</div>
+		
+		
 
 	</div>
 	{{-- row --}}
